@@ -155,6 +155,26 @@ namespace Dominio
             }
         }
 
+        //Login
+        public Usuario Login(string username, string password)
+        {
+            foreach (Usuario usuario in this._usuarios)
+            {
+                if (usuario.Correo == username)
+                {
+                    if (usuario.Password == password)
+                    {
+                        return usuario;
+                    }
+                    else
+                    {
+                        throw new Exception("Contraseña incorrecta");
+                    }
+                }
+            }
+            throw new Exception("Nombre de usuario o contraseña incorrecta");
+        }
+
         //Aviones
         public void AgregarAvion(Avion avion) //precarga de datos avion
         {
